@@ -66,7 +66,7 @@ A sample PromptScript snippet:
 ```promptscript
 blueprint ToDoApp {
     version: "1.0"
-    author: "ChatGPT"
+    author: "LeoMuguchia"
     goal: "Develop a full-stack to-do app with user authentication, task management, and dynamic UI."
 }
 
