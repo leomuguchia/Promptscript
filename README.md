@@ -157,69 +157,80 @@ Combine global blueprint details (e.g., app version, architectural stack) with l
 ## 3.2.2 AI Compiler/Orchestrator
 Technology:
 Python-based microservice that interacts with external AI APIs.
-Modules:
-Session Context Manager:
+
+## Modules:
+### Session Context Manager:
 Manages conversation state, using caching (e.g., Redis) for persistent context across API calls.
-Query Executor:
+
+### Query Executor:
 Assembles prompts and sends them to AI services (using asynchronous calls for speed).
-Meta-Prompter:
+### Meta-Prompter:
 Evaluates responses for consistency, triggers additional prompts if the code fragment misses key elements.
-API Integration:
+### API Integration:
 Use REST/GraphQL interfaces to communicate with AI platforms.
 Secure API keys and use rate limiting to handle multiple requests.
 
-## 3.3 Code Aggregator & Deployment Manager
-### 3.3.1 Code Aggregator
-Stitching Engine:
+# 3.3 Code Aggregator & Deployment Manager
+## 3.3.1 Code Aggregator
+### Stitching Engine:
 Combines multiple language fragments (e.g., backend code in Python, frontend in JavaScript) into a coherent project structure.
-Dependency Resolver:
+### Dependency Resolver:
 Utilizes a mapping of symbols (classes, functions) across modules to ensure inter-dependencies are met.
 Formatting:
 Hooks into linters/formatters to standardize code style.
-3.3.2 Deployment Manager
-Containerization:
+
+# 3.3.2 Deployment Manager
+## Containerization:
 Generates Dockerfiles and Kubernetes YAML configurations.
-CI/CD Integration:
+## CI/CD Integration:
 Provides scripts to integrate with platforms like GitHub Actions or Jenkins for automated testing and deployment.
-Cloud Connectors:
+## Cloud Connectors:
 Configurations for deploying to cloud platforms (e.g., AWS Elastic Beanstalk, Google Cloud Run).
-4. Context Management & Reasoning Strategies
-4.1 Hierarchical Context Tree
-Global Context:
+
+# 4. Context Management & Reasoning Strategies
+## 4.1 Hierarchical Context Tree
+ - Global Context:
 Stored in a central JSON file, includes blueprint details.
-Local Context:
+ - Local Context:
 Each prompt/task node includes inherited context from its parent.
-4.2 Dynamic Context Window Optimization
-Summarization:
+
+## 4.2 Dynamic Context Window Optimization
+- Summarization:
 Use summarization APIs to condense long contexts when token limits are reached.
-Pinning Critical Data:
+- Pinning Critical Data:
 Always include blueprint metadata and primary module dependencies in every prompt.
-4.3 Multi-Agent Reasoning (Future Work)
-Agent Roles:
+
+## 4.3 Multi-Agent Reasoning (Future Work)
+- Agent Roles:
 Architect Agent: Plans overall project structure.
 Coder Agent: Generates code for individual tasks.
 Reviewer Agent: Analyzes and refines generated code.
 Deployment Agent: Packages and deploys the final output.
 Coordination:
 Agents share a unified context tree and communicate through internal APIs.
-5. Implementation Roadmap
-Phase 1: Prototype Development
+
+# 5. Implementation Roadmap
+## Phase 1: Prototype Development
 Build a minimal parser and context builder.
 Create a simple web-based editor (using React or similar).
 Implement basic integration with a chosen AI API (e.g., OpenAI).
-Phase 2: MVP
+
+## Phase 2: MVP
 Extend DSL support for more complex constructs (voice commands, conditional workflows).
 Develop the full orchestration engine with session context management.
 Build the code aggregator and integrate basic deployment scripts.
-Phase 3: Optimization & Expansion
+
+## Phase 3: Optimization & Expansion
 Optimize context window strategies with summarization techniques.
 Introduce multi-agent reasoning and collaborative AI modules.
 Expand deployment support and CI/CD integration.
 Open source the project and build a community around PromptScript.
-6. Conclusion
+
+
+# 6. Conclusion
 PromptScript represents a bold step toward unifying human intent and machine-executed code generation. With its structured DSL, robust context management, and deep AI integration, PromptScript has the potential to democratize software development and accelerate innovation. The technical foundation outlined in this document provides a roadmap for developing an AI-driven development ecosystem—from prompt to production.
 
-7. Call to Action
+# 7. Call to Action
 We invite contributors, researchers, and developers to join the PromptScript project. Let’s collaborate on building an open source platform that redefines how code is conceived, generated, and deployed in the AI age.
 
 Prepared by: Leomuguchia
