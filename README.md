@@ -218,13 +218,13 @@ Use summarization APIs to condense long contexts when token limits are reached.
 Always include blueprint metadata and primary module dependencies in every prompt.
 
 ## 4.3 Multi-Agent Reasoning (Future Work)
-- Agent Roles:
-Architect Agent: Plans overall project structure.
-Coder Agent: Generates code for individual tasks.
-Reviewer Agent: Analyzes and refines generated code.
-Deployment Agent: Packages and deploys the final output.
-Coordination:
-Agents share a unified context tree and communicate through internal APIs.
+Agent Roles:
+
+**Architect Agent:** Plans overall project structure.
+**Coder Agent:** Generates code for individual tasks.
+**Reviewer Agent:** Analyzes and refines generated code.
+**Deployment Agent:** Packages and deploys the final output.
+**Coordination:** Agents share a unified context tree and communicate through internal APIs.
 
 # 5. Implementation Roadmap
 ## Phase 1: Prototype Development
