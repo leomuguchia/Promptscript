@@ -1,0 +1,23 @@
+intent "Task Management Module" {
+    description: "Allow users to add, edit, and remove tasks."
+}
+
+data task: {id: int, title: string, completed: bool}
+
+operation createTask {
+    input: {title: string}
+    action: "add new task to database"
+    output: task: task
+}
+
+operation updateTask {
+    input: task
+    action: "update existing task in database"
+    output: updatedTask: task
+}
+
+operation deleteTask {
+    input: {id: int}
+    action: "remove task from database"
+    output: deletionStatus: string
+}
