@@ -1,0 +1,31 @@
+// promptscript/grammar.lark
+?start: blueprint prompt* workflow?
+
+blueprint: "blueprint" NAME "{" blueprint_body "}"
+blueprint_body: (version | author | goal)*
+version: "version:" STRING
+author: "author:" STRING
+goal: "goal:" STRING
+
+prompt: "prompt" NAME "{" prompt_body "}"
+prompt_body: (define | task)+
+define: "define" NAME ":" definition_body
+definition_body: /[^{\n]+/ 
+
+task: "task" NAME ":" task_body
+task_body: task_field+
+task_field: "input:" /[^\n]+/ 
+          | "instruction:" STRING 
+          | "output:" STRING
+
+workflow: "workflow" NAME "{" workflow_body "}"
+workflow_body: step+
+step: "step" NAME "->" invocation
+invocation: NAME "." NAME "(" [arguments] ")"
+arguments: NAME ("," NAME)*
+
+NAME: /[a-zA-Z_]\w*/
+STRING: /"(?:\\.|[^"\\])*"/
+
+%import common.WS
+%ignore WS

@@ -1,0 +1,24 @@
+blueprint ToDoApp {
+    version: "1.0"
+    author: "LeoMuguchia"
+    goal: "Develop a full-stack to-do app with user authentication, task management, and dynamic UI."
+}
+
+prompt UserAuth {
+    define Data: User { email: string, password: string, verified: bool }
+    
+    task register:
+        input: User user
+        instruction: "Store user data securely and send a verification email."
+        output: "registrationStatus"
+    
+    task login:
+        input: email: string, password: string
+        instruction: "Authenticate the user and generate a session token."
+        output: "sessionToken"
+}
+
+workflow ToDoFlow {
+    step auth -> UserAuth.login(email, password)
+    step addTask -> TaskManager.create(title)
+}

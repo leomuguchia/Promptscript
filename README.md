@@ -70,6 +70,7 @@ graph TD;
    - Provides containerization (Docker support) and integration with cloud providers (e.g., Kubernetes, AWS, Firebase).
    - Automates build, test, and deploy processes via CI/CD pipelines.
 
+ -**NB:** This isn’t just about code generation—it’s about preserving the context (blueprint details, workflows, task dependencies) to generate coherent, integrated solutions.
 ---
 
 ## 3. Detailed Component Specifications
