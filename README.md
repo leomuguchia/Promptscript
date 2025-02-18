@@ -22,6 +22,7 @@ This document outlines the technical design of PromptScript, focusing on:
 
 ### 2.1 High-Level Architecture Diagram
 
+```mermaid
 graph TD;
     UI[User/Dev UI (Web/CLI IDE)]
     Parser[DSL Parser & Context Builder]
@@ -38,6 +39,7 @@ graph TD;
     Translator --> Aggregator;
     Aggregator --> Deploy;
     ContextTree --> Translator;
+```
 
 
 ### 2.2 Component Overview
