@@ -45,9 +45,33 @@ graph TD;
     Aggregator --> Deploy;
     Aggregator --> Toggle;
 ```
+ ## 2. Key Components:
 
-### 2.2 Component Overview
+## 2.1 DSL Parser & AST Generator:
+Uses a formal grammar (e.g., via Lark) to convert PromptScript into an abstract syntax tree (AST) that retains blueprint, module, task, and workflow information.
 
+## 2.2 Context & Dependency Manager:
+Builds a hierarchical context (global blueprint, local tasks) and manages dependencies. This context is used to inform code generation and deployment decisions.
+
+## 2.3 Chain-of-Thought Translator:
+Constructs enriched prompts that include not only the high-level task descriptions but also the blueprint metadata, dependencies, and any target-specific considerations.
+
+## 2.4 Target Language Selector:
+Determines the language-specific templates and idioms to use when generating code. For instance, the same high-level prompt can generate a Python Flask backend or a Node.js Express API depending on user preference.
+
+## 2.5 AI Code Generator:
+Integrates with an AI model (OpenAI’s API initially) to produce production-level code based on the enriched prompts. This module ensures the generated code adheres to best practices in error handling, security, and maintainability.
+
+## 2.6 Code Aggregator & Project Builder:
+Assembles individual code fragments into a complete, runnable project structure. This includes adding build scripts, dependency files, and optionally Docker or Kubernetes configurations for deployment.
+
+## 2.7 Deployment Manager:
+Provides hooks for local testing, containerization, and automated deployment pipelines (CI/CD). This module abstracts away deployment details, letting users deploy directly from PromptScript.
+
+## 2.8 Code Viewer Toggle:
+An optional component that allows users to inspect or edit the underlying generated code if they choose to.
+
+## SUggested MVP Structure Overview
 1. **User Interface (UI):**
    - Web-based or CLI editor for authoring PromptScript.
    - Real-time display of parsed context and generated code fragments.
@@ -75,7 +99,7 @@ graph TD;
    - Provides containerization (Docker support) and integration with cloud providers (e.g., Kubernetes, AWS, Firebase).
    - Automates build, test, and deploy processes via CI/CD pipelines.
 
- -**NB:** This isn’t just about code generation—it’s about preserving the context (blueprint details, workflows, task dependencies) to generate coherent, integrated solutions.
+ -**NB:** - This isn’t just about code generation—it’s about preserving the context (blueprint details, workflows, task dependencies) to generate coherent, integrated solutions.
 ---
 
 ## 3. Detailed Component Specifications
