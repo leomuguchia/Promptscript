@@ -22,7 +22,22 @@ This document outlines the technical design of PromptScript, focusing on:
 
 ### 2.1 High-Level Architecture Diagram
 
-+----------------+ +-----------------+ +---------------------+ | User/Dev UI | ---> | DSL Parser & | ---> | AI Compiler/ | | (Web/CLI IDE) | | Context Builder | | Orchestrator | +----------------+ +-----------------+ +---------------------+ | | | | | | v v v +----------------+ +-----------------+ +---------------------+ | Context Tree | ---> | Intent Translator| ---> | Code Aggregator | | (JSON/XML) | | (Prompt Generator)| | (Stitcher, Linter) | +----------------+ +-----------------+ +---------------------+ | | v v +----------------------+ | Deployment Manager | | (Docker, CI/CD, etc.)| +----------------------+
+graph TD;
+    UI[User/Dev UI (Web/CLI IDE)]
+    Parser[DSL Parser & Context Builder]
+    Compiler[AI Compiler/Orchestrator]
+    ContextTree[Context Tree (JSON/XML)]
+    Translator[Intent Translator (Prompt Generator)]
+    Aggregator[Code Aggregator (Stitcher, Linter)]
+    Deploy[Deployment Manager (Docker, CI/CD, etc.)]
+  
+    UI --> Parser;
+    Parser --> Compiler;
+    Parser --> ContextTree;
+    Compiler --> Translator;
+    Translator --> Aggregator;
+    Aggregator --> Deploy;
+    ContextTree --> Translator;
 
 
 ### 2.2 Component Overview
