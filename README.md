@@ -88,7 +88,8 @@ prompt UserAuth {
 workflow ToDoFlow {
     step auth -> UserAuth.login(email, password)
     step addTask -> TaskManager.create(title)
-}```
+}
+```
 
 ## 3.1.2 Parser Implementation
 Language: Python 3.x
@@ -100,7 +101,7 @@ Later iterations may leverage parser generators (e.g., ANTLR) for robustness.
 Output Data Structure:
 The parser produces a JSON-like context tree:
 
-``json
+```json
 {
     "blueprint": {
         "name": "ToDoApp",
@@ -137,6 +138,7 @@ The parser produces a JSON-like context tree:
         ]
     }
 }
+```
 
 ## 3.2 Intent Translator & AI Compiler
 ## 3.2.1 Intent Translation
@@ -148,10 +150,11 @@ For the task UserAuth.login, the generated prompt might be:
 "You are an AI developer tasked with generating a Python Flask endpoint. 
 The function should accept JSON with an 'email' and 'password', authenticate the user,
 and return a session token. Please include proper error handling and follow secure coding practices."
+```
 Context Augmentation:
 Combine global blueprint details (e.g., app version, architectural stack) with local prompt data.
 
-3.2.2 AI Compiler/Orchestrator
+## 3.2.2 AI Compiler/Orchestrator
 Technology:
 Python-based microservice that interacts with external AI APIs.
 Modules:
@@ -164,8 +167,9 @@ Evaluates responses for consistency, triggers additional prompts if the code fra
 API Integration:
 Use REST/GraphQL interfaces to communicate with AI platforms.
 Secure API keys and use rate limiting to handle multiple requests.
-3.3 Code Aggregator & Deployment Manager
-3.3.1 Code Aggregator
+
+## 3.3 Code Aggregator & Deployment Manager
+### 3.3.1 Code Aggregator
 Stitching Engine:
 Combines multiple language fragments (e.g., backend code in Python, frontend in JavaScript) into a coherent project structure.
 Dependency Resolver:
