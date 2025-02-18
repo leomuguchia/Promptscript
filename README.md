@@ -24,14 +24,14 @@ This document outlines the technical design of PromptScript, focusing on:
 
 ```mermaid
 graph TD;
-    UI[User/Dev UI (Web/CLI IDE)]
+    UI[User or Dev Interface]
     Parser[DSL Parser & Context Builder]
-    Compiler[AI Compiler/Orchestrator]
-    ContextTree[Context Tree (JSON/XML)]
-    Translator[Intent Translator (Prompt Generator)]
-    Aggregator[Code Aggregator (Stitcher, Linter)]
-    Deploy[Deployment Manager (Docker, CI/CD, etc.)]
-  
+    Compiler[AI Compiler and Orchestrator]
+    ContextTree[Context Tree]
+    Translator[Intent Translator]
+    Aggregator[Code Aggregator]
+    Deploy[Deployment Manager]
+
     UI --> Parser;
     Parser --> Compiler;
     Parser --> ContextTree;
@@ -40,7 +40,6 @@ graph TD;
     Aggregator --> Deploy;
     ContextTree --> Translator;
 ```
-
 
 ### 2.2 Component Overview
 
